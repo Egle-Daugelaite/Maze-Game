@@ -6,4 +6,4 @@ The player uses the navigation keys of the keyboard to maneuver the mouse throug
 
 
 ![gray2](https://user-images.githubusercontent.com/42369579/46489781-02181f00-c80f-11e8-8bec-6230697ad4b7.gif)
-![green](https://user-images.githubusercontent.com/42369579/46135339-9f8eb400-c24d-11e8-8bad-23581c2d7fd2.gif)
+![green2](https://user-images.githubusercontent.com/42369579/46489855-296eec00-c80f-11e8-8191-016a988ed454.gif)
