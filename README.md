@@ -1,5 +1,5 @@
 # Maze-Game
-Game "Catch me if you can"
+The Game "Catch me if you can" was developed as the final project of JAVA bootcamp.
 
 The object of the game is for the mouse to escape from the cat.
 The player uses the navigation keys of the keyboard to maneuver the mouse through the maze. The cat movement is based on the shortest path search. 
