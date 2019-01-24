@@ -7,6 +7,11 @@ import java.util.List;
 import com.projectWork.model.Maze;
 import com.projectWork.model.Point;
 
+/**
+ * Class for path search using depth first search algorithm(not the shortest
+ * path).
+ * 
+ */
 public class PathSearch {
 
 	private static final boolean VISITED = true;

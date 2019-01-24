@@ -11,6 +11,10 @@ import java.util.Queue;
 import com.projectWork.model.Maze;
 import com.projectWork.model.Point;
 
+/**
+ * Class for the shortest path search using Breadth first search algorithm.
+ * 
+ */
 public class ShortestPathSearch {
 
 	private static final boolean VISITED = true;
@@ -43,28 +47,28 @@ public class ShortestPathSearch {
 
 	private boolean findShortestPath(Maze mazePlan, Point cat, Point mouse, List<Point> path) {
 
-		Queue<Point> galimiKeliai = new LinkedList<>();
+		Queue<Point> possiblePaths = new LinkedList<>();
 		visitedMaze[cat.getX()][cat.getY()] = VISITED;
-		galimiKeliai.add(new Point(cat.getX(), cat.getY()));
+		possiblePaths.add(new Point(cat.getX(), cat.getY()));
 
-		while (!galimiKeliai.isEmpty()) {
+		while (!possiblePaths.isEmpty()) {
 
-			Point dabartinisPoint = galimiKeliai.remove();
+			Point currentPoint = possiblePaths.remove();
 
-			if (dabartinisPoint.getX() == mouse.getX() && dabartinisPoint.getY() == mouse.getY()) {
+			if (currentPoint.getX() == mouse.getX() && currentPoint.getY() == mouse.getY()) {
 
-				while (dabartinisPoint != null) {
-					path.add(dabartinisPoint);
-					dabartinisPoint = parents.get(dabartinisPoint);
+				while (currentPoint != null) {
+					path.add(currentPoint);
+					currentPoint = parents.get(currentPoint);
 				}
 				return true;
 			}
 
-			for (Point kaimynas : getKaimynuSarasas(dabartinisPoint)) {
-				if (mazePlan.pointIsValid(kaimynas) && !visitedMaze[kaimynas.getX()][kaimynas.getY()]) {
-					visitedMaze[kaimynas.getX()][kaimynas.getY()] = VISITED;
-					galimiKeliai.add(kaimynas);
-					parents.put(kaimynas, dabartinisPoint);
+			for (Point neighbor : getNeighborsList(currentPoint)) {
+				if (mazePlan.pointIsValid(neighbor) && !visitedMaze[neighbor.getX()][neighbor.getY()]) {
+					visitedMaze[neighbor.getX()][neighbor.getY()] = VISITED;
+					possiblePaths.add(neighbor);
+					parents.put(neighbor, currentPoint);
 				}
 			}
 
@@ -73,32 +77,32 @@ public class ShortestPathSearch {
 		return false;
 	}
 
-	private List<Point> getKaimynuSarasas(Point dabartinisPoint) {
+	private List<Point> getNeighborsList(Point currentPoint) {
 
-		Point up = new Point(dabartinisPoint.getX(), dabartinisPoint.getY() - 1);
-		Point down = new Point(dabartinisPoint.getX(), dabartinisPoint.getY() + 1);
-		Point toLeft = new Point(dabartinisPoint.getX() - 1, dabartinisPoint.getY());
-		Point toRight = new Point(dabartinisPoint.getX() + 1, dabartinisPoint.getY());
+		Point up = new Point(currentPoint.getX(), currentPoint.getY() - 1);
+		Point down = new Point(currentPoint.getX(), currentPoint.getY() + 1);
+		Point toLeft = new Point(currentPoint.getX() - 1, currentPoint.getY());
+		Point toRight = new Point(currentPoint.getX() + 1, currentPoint.getY());
 
-		List<Point> kaimynuSarasas = new ArrayList<>(4);
+		List<Point> neighborsList = new ArrayList<>(4);
 
 		if (mazePlan.pointIsFree(up)) {
-			kaimynuSarasas.add(up);
+			neighborsList.add(up);
 		}
 
 		if (mazePlan.pointIsFree(down)) {
-			kaimynuSarasas.add(down);
+			neighborsList.add(down);
 		}
 
 		if (mazePlan.pointIsFree(toLeft)) {
-			kaimynuSarasas.add(toLeft);
+			neighborsList.add(toLeft);
 		}
 
 		if (mazePlan.pointIsFree(toRight)) {
-			kaimynuSarasas.add(toRight);
+			neighborsList.add(toRight);
 		}
 
-		return kaimynuSarasas;
+		return neighborsList;
 	}
 
 }
