@@ -52,9 +52,9 @@ public class MazePlan {
 		} catch (FileNotFoundException e) {
 			System.out.println("File Not Found");
 		} catch (IOException e) {
-			System.out.println("negalimas nuskaitymas");
+			System.out.println("Unable to load a file");
 		} catch (NullPointerException e) {
-			System.out.println("file is empty");
+			System.out.println("File is empty");
 		}
 
 	}

@@ -23,7 +23,7 @@ public class ChangeOfTheme {
 	public Color changeBackground() {
 		switch (color) {
 		case GREEN:
-			return backgroundE = Color.CYAN;
+			return backgroundE = new Color(19, 209, 31);
 		case DARK_GRAY:
 			return backgroundE = Color.DARK_GRAY;
 		case RED:

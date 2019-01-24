@@ -33,7 +33,7 @@ public class WindowRunner {
 
 	public static void main(String[] args) throws IOException {
 
-		ColorOfTheme color = ColorOfTheme.DARK_GRAY;
+		ColorOfTheme color = ColorOfTheme.GREEN;
 
 		game = new WindowRunner(color);
 
